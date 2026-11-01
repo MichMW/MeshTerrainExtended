@@ -7,8 +7,7 @@ Tested with **Unreal Engine 5.8.4**
 
 ## Setup
 
-Use the pipelines from the plugin content (only needed for tessellation):
-
+Use the pipelines from the plugin content (only needed for tessellation)
 
 ## Tips
 
