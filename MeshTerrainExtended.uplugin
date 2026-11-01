@@ -1,0 +1,31 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1",
+	"FriendlyName": "Mesh Terrain Extended",
+	"Description": "Extensions and fixes for Epic's Mesh Terrain / Mesh Partition (UE 5.8): Standalone Game support, Standalone material channel sampling, and seam-normal welding for crack-free tessellation.",
+	"Category": "Mesh Partition",
+	"CreatedBy": "",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": true,
+	"Installed": false,
+	"EnabledByDefault": true,
+	"Modules": [
+		{
+			"Name": "MeshTerrainExtended",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "MeshPartition",
+			"Enabled": true
+		}
+	]
+}
