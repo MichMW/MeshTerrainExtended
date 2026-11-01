@@ -1,6 +1,6 @@
 # Mesh Terrain Extended
 
-Fixes several issues with `MeshTerrainMode` in Epic's **Mesh Terrain** plugin.
+Fixes several issues with Epic's `MeshTerrainMode`.
 
 > **Tested with:** Unreal Engine 5.8.4
 
