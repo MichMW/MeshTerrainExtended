@@ -8,6 +8,8 @@ Fixes several issues with Epic's `MeshTerrainMode`.
 
 Use the pipelines from the plugin's content folder.
 
+In the two PlatformRenderData MPD's, Make sure the 'WeldSeamNormals' Transformer is set on the first Transformer
+
 > [!NOTE]
 > This is only needed for tessellation.
 
