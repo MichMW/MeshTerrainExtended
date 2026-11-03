@@ -16,6 +16,7 @@
 #include "CoreMinimal.h"
 #include "MeshPartitionTransformer.h"
 #include "MeshPartitionMeshData.h"
+#include "MeshPartitionDependencyInterface.h"
 
 #include "WeldSeamNormalsTransformer.generated.h"
 
@@ -34,8 +35,26 @@ struct FWeldSeamNormalsTransformer : public UE::MeshPartition::FTransformer
 	UPROPERTY(EditAnywhere, Category = "Normals", meta = (ClampMin = "0", ClampMax = "180"))
 	float MaxWeldAngle = 60.0f;
 
+	/**
+	 * Also weld copies sharper than MaxWeldAngle (e.g. where a Boolean cave/tunnel meets the terrain).
+	 * Tessellation pushes vertices along their normal, so any split normal opens a crack.
+	 * On = crack-free, but sharp creases get slightly softer shading. Off = sharp creases stay sharp and may crack.
+	 */
+	UPROPERTY(EditAnywhere, Category = "Normals")
+	bool bWeldSharpEdges = true;
+
+	/**
+	 * Vertices closer than this (cm) are treated as the same point: snapped together and welded.
+	 * Closes the hairline cracks Boolean modifiers can leave along their cut. 0 = exact positions only.
+	 */
+	UPROPERTY(EditAnywhere, Category = "Normals", meta = (ClampMin = "0", ClampMax = "5"))
+	float WeldTolerance = 0.1f;
+
 	using UE::MeshPartition::FTransformer::Execute; // keep the preview-component overload visible
 
 	virtual bool Execute(UE::MeshPartition::FTransformerContext& InTransformerContext) const override;
+
+	/** Makes the build hash change when this code or its settings change, so sections are rebuilt instead of reused. */
+	virtual void GatherDependencies(UE::MeshPartition::IDependencyInterface& InDependencies) const override;
 };
 } // namespace UE::MeshTerrainExtended
